@@ -39,6 +39,8 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
+                <a href="<?php echo route('posts.show', 1) ?>">Link to posts.show</a>
+                <a href="<?php echo route('posts.maintain', 2) ?>">Link to post.maintain</a>
             </div>
         </div>
     </body>

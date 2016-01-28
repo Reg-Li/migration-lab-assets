@@ -11,8 +11,23 @@
 |
 */
 
+/**
+ * Route Pattern
+ */
+Route::pattern('id', '[0-9]+');
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('posts/{id}', ['as' => 'posts.show', function($id) {
+    return '新增第 ' . $id . ' 篇文章';
+}]);
+
+Route::group(['prefix' => 'maintain', 'domain' => 'www.myapp.com'], function() {
+    Route::get('posts/{id}', ['as' => 'posts.maintain', function($id) {
+        return '管理第 ' . $id . ' 篇文章';
+    }]);
 });
 
 /*
