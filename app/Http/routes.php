@@ -16,19 +16,27 @@
  */
 Route::pattern('id', '[0-9]+');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('hello/{name?}', function ($name = 'Everybody') {
+    $data = ['name' => $name];
+    return view('index', $data);
+    // return view('index', $data)->with('name', $name);
 });
 
-Route::get('posts/{id}', ['as' => 'posts.show', function($id) {
-    return '新增第 ' . $id . ' 篇文章';
+Route::get('about', ['as' => 'about', function () {
+    return view('about');
 }]);
 
-Route::group(['prefix' => 'maintain', 'domain' => 'www.myapp.com'], function() {
-    Route::get('posts/{id}', ['as' => 'posts.maintain', function($id) {
-        return '管理第 ' . $id . ' 篇文章';
-    }]);
-});
+Route::get('services', ['as' => 'services', function () {
+    return view('services');
+}]);
+
+Route::get('portfolio', ['as' => 'portfolio', function () {
+    return view('portfolio');
+}]);
+
+Route::get('contact', ['as' => 'contact', function () {
+    return view('contact');
+}]);
 
 /*
 |--------------------------------------------------------------------------
